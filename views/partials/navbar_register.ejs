@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>YelpCamp</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    	<a class="navbar-brand" href="/"><i class="material-icons"style="font-size: 28px">photo_library</i> YelpCamp</a>    	
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+    	</button>
+    	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+    		<ul class="nav navbar-nav ml-auto">
+          <% if(!currentUser){ %>
+            <li class="nav-item ">
+      				<a class="nav-link" href="/login">Log in</a>
+      			</li>
+      			<li class="nav-item">
+      				<a class="nav-link" href="/register">Sign Up</a>
+      			</li>
+          <%} else { %>
+            <li><a>Signed In As <%=currentUser.username%></a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        <%  }%>
+    		</ul>
+    	</div>
+    </nav>
+
+    <div class="container">
+      <% if(error && error.length >0) { %>
+        <div class="alert alert-danger" role="alert">
+          <%=error%>
+        </div>
+      <%} %>
+      <% if(success &&success.length >0) { %>
+        <div class="alert alert-success" role="alert">
+          <%=success%>
+        </div>
+      <%}%>
+    </div>
+  
